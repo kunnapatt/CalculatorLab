@@ -125,9 +125,16 @@ namespace CPE200Lab1
                         string result = calculate(operate, firstOperand, secondOperand);
                         if (result is "E" || result.Length > 8)
                         {
-                            lblDisplay.Text = "Error"
+                            lblDisplay.Text = "Error";
+                        }
+                        else
+                        {
+                            lblDisplay.Text = result;
+                            firstOperand = result;
                         }
                     }
+                    operate = ((Button)sender).Text;
+                    switch (operate)
                     firstOperand = lblDisplay.Text;
                     isAfterOperater = true;
                     break;
