@@ -62,6 +62,8 @@ namespace CPE200Lab1
                     break;
                 case "%":
                     //your code here
+                    
+                    return ((Convert.ToDouble(firstOperand) * Convert.ToDouble(secondOperand) / 100) + Convert.ToDouble(firstOperand)).ToString();
                     break;
             }
             return "E";
@@ -134,7 +136,7 @@ namespace CPE200Lab1
                         }
                     }
                     operate = ((Button)sender).Text;
-                    switch (operate)
+                    //switch (operate)
                     firstOperand = lblDisplay.Text;
                     isAfterOperater = true;
                     break;
@@ -211,6 +213,8 @@ namespace CPE200Lab1
 
         private void btnClear_Click(object sender, EventArgs e)
         {
+            lblDisplay.Text = " ";
+            firstOperand = null;
             resetAll();
         }
 
