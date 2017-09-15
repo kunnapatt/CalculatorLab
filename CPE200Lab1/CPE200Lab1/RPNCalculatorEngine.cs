@@ -27,6 +27,7 @@ namespace CPE200Lab1
                     secondOperand = rpnStack.Pop();
                     firstOperand = rpnStack.Pop();
                     result = calculate(token, firstOperand, secondOperand, 4);
+                    if ()
                     if (result is "E")
                     {
                         return result;

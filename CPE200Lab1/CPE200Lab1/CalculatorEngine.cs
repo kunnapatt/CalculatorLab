@@ -35,7 +35,8 @@ namespace CPE200Lab1
             while(parts.Count > 1)
             {
                 //Check if the first three is ready for calcuation
-                if(!(isNumber(parts[0]) && isOperator(parts[1]) && isNumber(parts[2])))
+                
+                if (!(isNumber(parts[0]) && isOperator(parts[1]) && isNumber(parts[2])))
                 {
                     return "E";
                 } else
@@ -47,6 +48,7 @@ namespace CPE200Lab1
                     // Put back the result
                     parts.Insert(0, result);
                 }
+                
             }
             return parts[0];
         }
@@ -91,7 +93,9 @@ namespace CPE200Lab1
                         // calculate remaining space for fractional part.
                         remainLength = maxOutputSize - parts[0].Length - 1;
                         // trim the fractional part gracefully. =
-                        return result.ToString("N" + remainLength);
+                        
+                        return result.ToString("G" + remainLength);
+
                     }
                     break;
             }
@@ -117,9 +121,11 @@ namespace CPE200Lab1
                         int remainLength;
 
                         result = (Convert.ToDouble(firstOperand) / Convert.ToDouble(secondOperand));
+                        result = Math.Round(result, 4);
                         // split between integer part and fractional part
                         parts = result.ToString().Split('.');
                         // if integer part length is already break max output, return error
+                        
                         if (parts[0].Length > maxOutputSize)
                         {
                             return "E";
@@ -127,6 +133,7 @@ namespace CPE200Lab1
                         // calculate remaining space for fractional part.
                         remainLength = maxOutputSize - parts[0].Length - 1;
                         // trim the fractional part gracefully. =
+                        
                         return result.ToString("N" + remainLength);
                     }
                     break;
