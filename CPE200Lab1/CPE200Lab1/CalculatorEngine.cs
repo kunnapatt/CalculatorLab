@@ -13,6 +13,25 @@ namespace CPE200Lab1
             double retNum;
             return Double.TryParse(str, out retNum);
         }
+        //protected bool isOver2(string str)
+        //{
+        //    if(str.Length>1) { return true; }
+        //    else return false;
+        //}
+        protected bool isOpera(string str)
+        {
+            if (str.Length > 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+           
+        }
+
+
 
         protected bool isOperator(string str)
         {
@@ -26,32 +45,7 @@ namespace CPE200Lab1
             return false;
         }
 
-        public string Process(string str)
-        {
-            //Split input string to multiple parts by space
-            List<string> parts = str.Split(' ').ToList<string>();
-            string result;
-            //As long as we have more than one part
-            while(parts.Count > 1)
-            {
-                //Check if the first three is ready for calcuation
-                
-                if (!(isNumber(parts[0]) && isOperator(parts[1]) && isNumber(parts[2])))
-                {
-                    return "E";
-                } else
-                {
-                    //Calculate the first three
-                    result = calculate(parts[1], parts[0], parts[2], 4);
-                    //Remove the first three
-                    parts.RemoveRange(0, 3);
-                    // Put back the result
-                    parts.Insert(0, result);
-                }
-                
-            }
-            return parts[0];
-        }
+        
         public string unaryCalculate(string operate, string operand, int maxOutputSize = 8)
         {
             switch (operate)
@@ -121,7 +115,7 @@ namespace CPE200Lab1
                         int remainLength;
 
                         result = (Convert.ToDouble(firstOperand) / Convert.ToDouble(secondOperand));
-                        result = Math.Round(result, 4);
+                        //result = Math.Round(result, 4);
                         // split between integer part and fractional part
                         parts = result.ToString().Split('.');
                         // if integer part length is already break max output, return error
@@ -133,8 +127,8 @@ namespace CPE200Lab1
                         // calculate remaining space for fractional part.
                         remainLength = maxOutputSize - parts[0].Length - 1;
                         // trim the fractional part gracefully. =
-                        
-                        return result.ToString("N" + remainLength);
+                        result = Math.Round(result, 4);
+                        return result.ToString();
                     }
                     break;
                 case "%":

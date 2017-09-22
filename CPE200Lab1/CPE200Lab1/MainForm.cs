@@ -19,7 +19,7 @@ namespace CPE200Lab1
         private string firstOperand;
         private string operate;
         private double memory;
-        private CalculatorEngine engine;
+        private SimpleCalulatorEngine engine;
 
         private void resetAll()
         {
@@ -37,7 +37,7 @@ namespace CPE200Lab1
         {
             InitializeComponent();
             memory = 0;
-            engine = new CalculatorEngine();
+            engine = new SimpleCalulatorEngine();
             resetAll();
         }
 
@@ -264,6 +264,11 @@ namespace CPE200Lab1
                 return;
             }
             lblDisplay.Text = memory.ToString();
+        }
+
+        private void lblDisplay_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
